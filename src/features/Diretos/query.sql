@@ -27,4 +27,4 @@ status not in ('Cancelado') and
 lower(subject) not like '%teste%' and
 origemmanifestacao in ('Telefone','Chat','Facebook','Twitter','Instagram','LinkedIn','Youtube','Web','ReclameAqui','MidiaSocialSegurado') and
 lower(chave_externa_beneficiario__r_plano__c) like '%direto%' and
-dataabertura >= cast(date(now()) - 1 as timestamp) and dataabertura <= cast(CONCAT(date(now()) - 1,' 23:59:59') as timestamp);
+dataabertura between cast(date(now()) - 1 as timestamp) and cast(CONCAT(date(now()) - 1,' 23:59:59') as timestamp);

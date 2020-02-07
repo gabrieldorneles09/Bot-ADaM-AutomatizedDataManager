@@ -16,7 +16,7 @@ cast(datafechamento as text),
 criadopor,
 proprietariomanifestacao
 from tb_st_motivo_salesforce 
-where dataabertura >= cast(date(now()) - 1 as timestamp) and dataabertura <= cast(CONCAT(date(now()) - 1,' 23:59:59') as timestamp)
+where dataabertura between cast(date(now()) - 1 as timestamp) and cast(CONCAT(date(now()) - 1,' 23:59:59') as timestamp)
 and tiporegistromanifestacao like '%Direto%'
 and areanegocio like 'Saúde%'
 and 

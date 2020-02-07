@@ -12,6 +12,7 @@ class DiretosController{
         console.log(`Executando query Diretos em: ${new Date()}`);
         var res = await Diretos.getDiretosCases(client);
         console.log(`Query Diretos finalizada em: ${new Date()}`);
+        console.log(`Inserindo dados Diretos em: ${new Date()}`);
         for(var i = 0; i < res.length; i++){
             await axios.post(this.url, qs.stringify({
                 data_hora_abertura: res[i].data_hora_abertura,
