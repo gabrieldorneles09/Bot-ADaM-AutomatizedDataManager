@@ -1,4 +1,3 @@
-const db = require('../../database');
 const fs = require('fs');
 const path = require('path');
 
@@ -13,18 +12,13 @@ class Diretos{
             .replace(/\s+/g, ' ');
     }
 
-    async getDiretosCases(){
+    async getDiretosCases(client){
         try {
-            await db.connect();
             
-            const response = await db.query(`${this.query}`);
-            
-            await db.end();
-
+            const response = await client.query(`${this.query}`);
             return response.rows;
         } catch (error) {
             console.log(error);
-            await db.end();
         }
     }
 }

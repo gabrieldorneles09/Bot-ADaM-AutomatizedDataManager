@@ -1,4 +1,3 @@
-const db = require('../../database');
 const fs = require('fs');
 const path = require('path');
 
@@ -13,18 +12,14 @@ class Gts{
             .replace(/\s+/g, ' ');
     }
 
-    async getGtsCases(){
+    async getGtsCases(client){
         try {
-            await db.connect();
             
-            const response = await db.query(`${this.query}`);
+            const response = await client.query(`${this.query}`);
             
-            await db.end();
-
             return response.rows;
         } catch (error) {
             console.log(error);
-            await db.end();
         }
     }
 }

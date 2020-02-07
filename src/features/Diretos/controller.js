@@ -8,10 +8,10 @@ class DiretosController{
         this.config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
         }
 
-    async postToSheet(){
-        console.log(`Executando query em: ${new Date()}`);
-        var res = await Diretos.getDiretosCases();
-        console.log(`Query finalizada em: ${new Date()}`);
+    async postToSheet(client){
+        console.log(`Executando query Diretos em: ${new Date()}`);
+        var res = await Diretos.getDiretosCases(client);
+        console.log(`Query Diretos finalizada em: ${new Date()}`);
         for(var i = 0; i < res.length; i++){
             await axios.post(this.url, qs.stringify({
                 data_hora_abertura: res[i].data_hora_abertura,
@@ -34,7 +34,8 @@ class DiretosController{
                 criado_por: res[i].criado_por
             }), this.config);
         }
-        console.log(`Execução finalizada em: ${new Date()}`);
+        console.log(`Execução Diretos finalizada em: ${new Date()}`);
+        return 1;
     }
 }
 
